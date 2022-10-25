@@ -1,0 +1,43 @@
+<%- include('partials/header') -%>
+
+<main class="">
+  <div class="bg-white dark:bg-gray-900">
+    <div class="container flex flex-col items-center px-4 py-12 mx-auto text-center">
+          <section class="">
+              <% if (locals.messages.errors) { %> <% messages.errors.forEach( el => { %>
+              <div class="alert alert-danger"><%= el.msg %></div>
+              <% }) %> <% } %> <% if (locals.messages.info) { %> <%
+              messages.info.forEach( el => { %>
+              <div class="alert alert-info"><%= el.msg %></div>
+              <% }) %> <% } %>
+              <form action="/login" method="POST">
+                  <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label "
+                      >Email address</label>
+                    <input
+                      type="email"
+                      class="form-control form-control bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                      id="exampleInputEmail1"
+                      aria-describedby="emailHelp"
+                      name="email"
+                    />
+                  </div>
+                  <div class="">
+                    <label for="exampleInputPassword1" class="form-label">Password</label>
+                    <input
+                      type="password"
+                      class="form-control form-control bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                      id="exampleInputPassword1"
+                      name="password"
+                    />
+                  </div>
+                  <div class="pt-7">
+                    <button type="submit" class="ml-4 inline-flex text-gray-700 bg-gray-100 border-0 py-2 px-6 focus:outline-none hover:bg-gray-400 rounded text-lg">Submit</button>
+                  </div>
+              </form>
+          </section>
+    </div>
+  </div>
+</main>
+
+<%- include('partials/footer') -%>

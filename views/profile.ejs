@@ -1,0 +1,56 @@
+<%- include('partials/header') -%>
+
+<section class="bg-white dark:bg-gray-900">
+  <div class="container flex flex-col items-center px-4 py-12 mx-auto text-center">
+      <h2 class="text-3xl font-semibold tracking-tight text-gray-700 sm:text-4xl dark:text-white">
+        Hi <%= user.userName %> <br> Want to add a recipe?
+      </h2>
+      <div class="mt-5 ">
+        <form action="/recipe/createRecipe" enctype="multipart/form-data" method="POST">
+          <div class="flex flex-col block mb-2 text-sm font-medium text-white dark:text-gray-600 mb-3 p-1.5 w-96">
+              <label for="name" class="form-label">Recipe name</label>
+              <input type="text" class="form-control bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" id="name" name="name">
+          </div>
+          <div class="flex flex-col block mb-2 text-sm font-medium text-gray-900 dark:text-gray-600 mb-3 p-1.5 w-96">
+            <label for="ingredients" class="form-label">Ingredients</label>
+            <textarea class="form-control bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" id="ingredients" name="ingredients"></textarea>
+          </div>
+          <div class="flex flex-col block mb-2 text-sm font-medium text-gray-900 dark:text-gray-600 mb-3 p-1.5 w-96">
+            <label for="instructions" class="form-label">Instuctions</label>
+            <textarea class="form-control bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" id="directions" name="directions"></textarea>
+          </div>
+          <div class="flex flex-col block mb-2 text-sm font-medium text-gray-900 dark:text-gray-600 mb-3 p-1.5 w-96">
+            <label for="imgUpload" class="form-label">Image</label>
+            <input type="file" class="form-control bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" id="imageUpload" name="file">
+          </div>
+          <div class="pt-7">
+            <button type="submit" class="ml-4 inline-flex text-gray-700 bg-gray-100 border-0 py-2 px-6 focus:outline-none hover:bg-gray-400 rounded text-lg">Submit</button>
+          </div>
+        </form>
+      </div>
+    </div>
+</section> 
+  <header>
+    <h1 class="bg-gray-700 py-4 text-center">
+    <a href="" class="text-3xl font-semibold tracking-tight text-gray-500 sm:text-4xl dark:text-white mt-1.5">All my recipes</h1>
+    </h1>      
+  </header>
+    <section class="min-h-screen body-font text-gray-600 ">
+         <div class="grid grid-flow-row  mx-auto px-5 py-10 ">
+          <div class="auto-rows-max">
+            <ul class="">
+            <% for(var i=0; i<recipes.length; i++) {%>
+              <li class="py-5 text-center w-full p-4 md:w-1/2 lg:w-1/4 bg-white rounded-lg shadow-lg dark:bg-gray-800 ">
+                <a href="/recipe/<%= recipes[i]._id%>">            
+                  <img class="object-cover w-full h-56" src="<%= recipes[i].image%>">
+                  <h2 class=" mt-2.5 block text-xl font-bold text-gray-800 dark:text-white"><%= recipes[i].name%></h2>
+                </a>
+              </li>
+            <% } %>
+            </ul>
+          </div> 
+         </div>
+      </div>
+    </section>
+
+<%- include('partials/footer') -%>

@@ -1,0 +1,24 @@
+<%- include('partials/header') -%>
+<header>
+  <h1 class="bg-gray-700 py-4 text-center">
+  <a href="" class="text-3xl font-semibold tracking-tight text-gray-500 sm:text-4xl dark:text-white mt-1.5">My favorite recipes</h1>
+  </h1>      
+</header>
+<section class="min-h-screen body-font text-gray-600 ">
+     <div class="container mx-auto px-5 py-10 ">
+      <div class="-m-4 flex flex-wrap ">
+        <ul class="w-full p-4 md:w-1/2 lg:w-1/4 bg-white rounded-lg shadow-lg dark:bg-gray-800">
+        <% for(var i=0; i<recipes.length; i++) {%>
+          <li class="py-5 text-center">
+            <a href="/recipe/<%= recipes[i].recipe._id%>">            
+              <img class="object-cover w-full h-56" src="<%= recipes[i].recipe.image%>">
+              <h2 class=" mt-2.5 block text-xl font-bold text-gray-800 dark:text-white"><%= recipes[i].recipe.name%></h2>
+            </a>
+          </li>
+        <% } %>
+        </ul>
+      </div> 
+     </div>
+  </div>
+</section>
+<%- include('partials/footer') -%>
